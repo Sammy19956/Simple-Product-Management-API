@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public APIResponse<Product> saveProduct(ProductDTO productDTO) {
-        Product product= new Product();
+        Product product = new Product();
         product.setProductCode(UUID.randomUUID());
         product.setProductName(productDTO.getProductName());
         product.setManufacturer(productDTO.getManufacturer());
