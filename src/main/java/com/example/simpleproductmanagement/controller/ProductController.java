@@ -49,4 +49,9 @@ public class ProductController {
     public ResponseEntity<APIResponse<List<Product>>> searchByName(@RequestParam String name){
         return ResponseEntity.ok(productService.searchProductByName(name));
     }
+
+    @GetMapping("get-products-with-price-above-hundred")
+    public ResponseEntity<APIResponse<List<Product>>> getProductsWithPriceAboveHundred(){
+        return ResponseEntity.ok(productService.getProductsWithPriceAboveHundred());
+    }
 }
