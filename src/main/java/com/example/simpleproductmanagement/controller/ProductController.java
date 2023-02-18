@@ -5,6 +5,7 @@ import com.example.simpleproductmanagement.entity.Product;
 import com.example.simpleproductmanagement.Services.ProductServiceImpl;
 import com.example.simpleproductmanagement.response.APIResponse;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class ProductController {
 
     @PostMapping("save-product")
     public ResponseEntity<APIResponse<Product>> saveProduct(@RequestBody ProductDTO productDTO){
-       return new ResponseEntity<>(productService.saveProduct(productDTO), HttpStatus.OK);
+       return new ResponseEntity<>(productService.saveProduct(productDTO), HttpStatus.CREATED);
     }
 
     @PutMapping("update-product/{id}")
@@ -40,5 +41,12 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
 
-
+    @DeleteMapping("delete-product/{id}")
+    public ResponseEntity<APIResponse<Product>> deleteProduct(@PathVariable Long id){
+        return ResponseEntity.ok(productService.deleteProduct(id));
+    }
+    @GetMapping("search-by-name/")
+    public ResponseEntity<APIResponse<List<Product>>> searchByName(@RequestParam String name){
+        return ResponseEntity.ok(productService.searchProductByName(name));
+    }
 }

@@ -16,4 +16,8 @@ public interface ProductService {
     APIResponse<List<Product>> getAllProducts();
 
     APIResponse<Product> getProductByCode(String uuid);
+
+    APIResponse<Product> deleteProduct(Long id);
+
+    APIResponse<List<Product>> searchProductByName(String name);
 }
