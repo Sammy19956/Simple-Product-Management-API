@@ -29,6 +29,11 @@ public class ProductController {
         return new ResponseEntity<>(productService.updateProduct(id, productDTO), HttpStatus.OK);
     }
 
+    @GetMapping("get-product-by-code/{code}")
+    public ResponseEntity<APIResponse<Product>> getProductByCode(@PathVariable String code){
+        return new ResponseEntity<>(productService.getProductByCode(code), HttpStatus.OK);
+    }
+
     @GetMapping("getAllProducts")
     public ResponseEntity<APIResponse<List<Product>>> getAllProducts()
     {

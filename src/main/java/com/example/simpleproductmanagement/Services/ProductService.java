@@ -5,6 +5,7 @@ import com.example.simpleproductmanagement.entity.Product;
 import com.example.simpleproductmanagement.response.APIResponse;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ProductService {
 
@@ -13,4 +14,6 @@ public interface ProductService {
     APIResponse<Product> updateProduct(Long productId, ProductDTO productDTO);
 
     APIResponse<List<Product>> getAllProducts();
+
+    APIResponse<Product> getProductByCode(String uuid);
 }

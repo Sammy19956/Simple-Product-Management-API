@@ -6,12 +6,9 @@ import com.example.simpleproductmanagement.dto.ProductDTO;
 import com.example.simpleproductmanagement.entity.Product;
 import com.example.simpleproductmanagement.repository.ProductRepository;
 import lombok.AllArgsConstructor;
-import java.util.*;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -55,5 +52,21 @@ public class ProductServiceImpl implements ProductService{
     public APIResponse<List<Product>> getAllProducts(){
         List<Product> products = productRepository.findAll();
         return new APIResponse<>(true, "Successful", products);
+    }
+
+    @Override
+    public APIResponse<Product> getProductByCode(String uuid) {
+        try{
+            Product product = productRepository.findProductByProductCode(UUID.fromString(uuid));
+            if(product == null){
+                throw new ProductNotFoundException("Product with code " + uuid + " not found");
+            } else{
+                return new APIResponse<>(true, "Successful", product);
+            }
+
+        }catch (Exception ex){
+            return new APIResponse<>(true, ex.getMessage(), null);
+        }
+
     }
 }
