@@ -1,5 +1,6 @@
 package com.example.simpleproductmanagement.dto;
 
+import com.example.simpleproductmanagement.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ public class ProductDTO {
     private String productName;
     private double price;
     private String manufacturer;
-    private String status;
+    private Status status;
     private int quantityInStore;
 
 

@@ -10,7 +10,7 @@ public interface ProductService {
 
     APIResponse<Product> saveProduct(ProductDTO productDTO);
 
-    APIResponse<Product>  updateProduct(Long productId, Product product);
+    APIResponse<Product> updateProduct(Long productId, ProductDTO productDTO);
 
     APIResponse<List<Product>> getAllProducts();
 }

@@ -5,11 +5,12 @@ import com.example.simpleproductmanagement.response.APIResponse;
 import com.example.simpleproductmanagement.dto.ProductDTO;
 import com.example.simpleproductmanagement.entity.Product;
 import com.example.simpleproductmanagement.repository.ProductRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,9 +20,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public APIResponse<Product> saveProduct(ProductDTO productDTO) {
-        Product product= new Product();
-        product.setProductCode(UUID.randomUUID());
+        Product product = new Product();
         product.setProductName(productDTO.getProductName());
+        product.setProductCode(UUID.randomUUID());
         product.setManufacturer(productDTO.getManufacturer());
         product.setPrice(productDTO.getPrice());
         product.setStatus(productDTO.getStatus());
@@ -31,16 +32,22 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public APIResponse<Product> updateProduct(Long productId, Product product){
-        Product product1 = productRepository.findById(productId)
-                .orElseThrow(() -> new ProductNotFoundException("Product with id " + productId + " not found"));
-        product.setProductCode(product.getProductCode());
-        product.setProductName(product.getProductName());
-        product.setManufacturer(product.getManufacturer());
-        product.setQuantityInStore(product.getQuantityInStore());
-        product.setPrice(product.getPrice());
-        productRepository.save(product);
-        return  new APIResponse<>(true, "Product updated successfully", product);
+    public APIResponse<Product> updateProduct(Long productId, ProductDTO productDTO){
+       try{
+           Product product = productRepository.findById(productId)
+                   .orElseThrow(() -> new ProductNotFoundException("Product Not Found"));
+
+               product.setProductName(productDTO.getProductName());
+               product.setManufacturer(productDTO.getManufacturer());
+               product.setStatus(productDTO.getStatus());
+               product.setPrice(productDTO.getPrice());
+               product.setQuantityInStore(productDTO.getQuantityInStore());
+               product.setUpdatedAt(LocalDateTime.now());
+               productRepository.save(product);
+               return  new APIResponse<>(true, "Product updated successfully", product);
+       }catch (Exception ex){
+           return new APIResponse<>(true, ex.getMessage(),null);
+       }
     }
 
     @Override
@@ -48,6 +55,4 @@ public class ProductServiceImpl implements ProductService{
         List<Product> products = productRepository.findAll();
         return new APIResponse<>(true, "Successful", products);
     }
-
-
 }

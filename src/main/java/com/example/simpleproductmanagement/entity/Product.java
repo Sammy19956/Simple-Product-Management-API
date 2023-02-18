@@ -1,12 +1,14 @@
 package com.example.simpleproductmanagement.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.simpleproductmanagement.enums.Status;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
+
 
 @Data
 @Entity
@@ -14,10 +16,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private  UUID productCode;
     private String productName;
+    private  UUID productCode;
     private double price;
     private String manufacturer;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
     private int quantityInStore;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
 }
