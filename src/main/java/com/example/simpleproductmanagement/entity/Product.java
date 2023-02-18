@@ -4,6 +4,7 @@ import com.example.simpleproductmanagement.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -15,8 +16,8 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private  UUID productCode;
     private String productName;
+    private  UUID productCode;
     private double price;
     private String manufacturer;
 
@@ -26,6 +27,7 @@ public class Product {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
     private LocalDateTime updatedAt;
 
 }
