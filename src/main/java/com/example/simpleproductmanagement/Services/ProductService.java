@@ -20,4 +20,6 @@ public interface ProductService {
     APIResponse<Product> deleteProduct(Long id);
 
     APIResponse<List<Product>> searchProductByName(String name);
+
+    APIResponse<List<Product>> getProductsWithPriceAboveHundred();
 }

@@ -96,4 +96,18 @@ public class ProductServiceImpl implements ProductService {
         }
 
     }
+
+    @Override
+    public APIResponse<List<Product>> getProductsWithPriceAboveHundred(){
+
+        try {
+            List<Product> products = productRepository.findProductsWithPriceAboveHundred();
+            if (products.size() == 0){
+                throw new ProductNotFoundException("There is no product with price above 100 and quantity in store zero");
+            }
+            return new APIResponse<>(true, "Successful",products);
+        } catch (Exception ex) {
+            return new APIResponse<>(true, ex.getMessage(), null);
+        }
+    }
 }
