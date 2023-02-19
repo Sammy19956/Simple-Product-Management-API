@@ -35,7 +35,7 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductByCode(code), HttpStatus.OK);
     }
 
-    @GetMapping("getAllProducts")
+    @GetMapping("get-all-products")
     public ResponseEntity<APIResponse<List<Product>>> getAllProducts()
     {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
@@ -45,7 +45,7 @@ public class ProductController {
     public ResponseEntity<APIResponse<Product>> deleteProduct(@PathVariable Long id){
         return ResponseEntity.ok(productService.deleteProduct(id));
     }
-    @GetMapping("search-by-name/")
+    @GetMapping("search-by-name")
     public ResponseEntity<APIResponse<List<Product>>> searchByName(@RequestParam String name){
         return ResponseEntity.ok(productService.searchProductByName(name));
     }
