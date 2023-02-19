@@ -1,6 +1,7 @@
 package com.example.simpleproductmanagement.dto;
 
 import com.example.simpleproductmanagement.enums.Status;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

@@ -14,6 +14,8 @@ public interface ProductRepository extends JpaRepository<Product, Long>
     Product findProductByProductCode(UUID uuid);
     List<Product> findProductsByProductNameContaining(String name);
 
+//    List<Product> findProductByPriceGreaterThanAndQuantityInStore(double price, int qty);
+
     @Query(nativeQuery = true, value = "select * from productmgt.product where price > 100 and quantity_in_store = 0")
     List<Product> findProductsWithPriceAboveHundred();
 }
