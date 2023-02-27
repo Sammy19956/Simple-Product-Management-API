@@ -26,10 +26,10 @@ public class ProductController {
 
     @Operation(summary = "save Product")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Student registered successfully",
+            @ApiResponse(responseCode = "200", description = "Product added Successfully",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Product.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid user details",
+                            schema = @Schema(implementation = Product.class))}),
+            @ApiResponse(responseCode = "400", description = "Invalid Product Details",
                     content = @Content)})
     @PostMapping("save-product")
     public ResponseEntity<APIResponse<Product>> saveProduct(@RequestBody ProductDTO productDTO){
