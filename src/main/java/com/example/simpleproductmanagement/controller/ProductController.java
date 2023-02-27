@@ -4,6 +4,11 @@ import com.example.simpleproductmanagement.dto.ProductDTO;
 import com.example.simpleproductmanagement.entity.Product;
 import com.example.simpleproductmanagement.Services.ProductServiceImpl;
 import com.example.simpleproductmanagement.response.APIResponse;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -19,6 +24,13 @@ public class ProductController {
 
     private final ProductServiceImpl productService;
 
+    @Operation(summary = "save Product")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Student registered successfully",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid user details",
+                    content = @Content)})
     @PostMapping("save-product")
     public ResponseEntity<APIResponse<Product>> saveProduct(@RequestBody ProductDTO productDTO){
        return new ResponseEntity<>(productService.saveProduct(productDTO), HttpStatus.CREATED);
