@@ -1,5 +1,15 @@
 # Simple-Product-Management-API
 A scalable REST API developed with Springboot to facilitate CRUD and utility operations on products.
+The system design is such that it supports all kinds of Products (from stationery items to online products).
+
+## Softwares And Frameworks
++ Java 17
++ Springboot
++ MySQL
++ Junit
++ Mockito
++ OpenAPI 3.0 Specification
+
 
 ![SIMPLE PRODUCT MANAGEMENT API DOCUMENTATION_page-0001](https://user-images.githubusercontent.com/90574154/221621692-77d29faf-fdf3-4d2a-bd9b-57ee5a0f5981.jpg)
 
@@ -21,5 +31,5 @@ A scalable REST API developed with Springboot to facilitate CRUD and utility ope
 
 ![SIMPLE PRODUCT MANAGEMENT API DOCUMENTATION_page-0010](https://user-images.githubusercontent.com/90574154/221623174-5b787e67-8265-4836-b8c6-1c32aaa58dac.jpg)
 
-#Softwares And Frameworks
+
 
