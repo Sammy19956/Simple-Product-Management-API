@@ -10,6 +10,13 @@ The system design is such that it supports all kinds of Products (from stationer
 + Mockito
 + OpenAPI 3.0 Specification
 
+## OpenAPI 3.0 Specification
+Detailed API Description - available endpoints and possible operations on the endpoints with request and response details.
+The specification is built using re-usable schemas, parameters, requestBodies and responses.
+
+Checkout https://app.swaggerhub.com/apis/SAMSONOGBERAWHE_1/simple-product_management_api/v1#
+
+## Technical Documentation with Class Diagrams
 
 ![SIMPLE PRODUCT MANAGEMENT API DOCUMENTATION_page-0001](https://user-images.githubusercontent.com/90574154/221621692-77d29faf-fdf3-4d2a-bd9b-57ee5a0f5981.jpg)
 
